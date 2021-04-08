@@ -26,6 +26,7 @@ source midastaskenv/bin/activate
 ```
 
 The 'nbs' folder contains all of the jupyter notebooks. These jupyter notebooks are my solution to the tasks. They are:
+
     1. Character Recognition: Part 1
     2.
     3.
