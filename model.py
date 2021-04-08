@@ -3,7 +3,19 @@ import torch.nn.functional as F
 import torch.nn as nn
 
 class Net(torch.nn.Module):
-
+    """
+    Convolutional Neural Network inspired by AlexNet()
+        - CNN's Layers:
+            1. Convolution -> ReLU -> Max pooling
+            2. Convolution -> ReLU -> Max pooling
+            3. Convolution -> ReLU 
+            4. Convolution -> ReLU
+            5. Convolution -> ReLU ->Max pooling
+            6. Avg Pooling -> Fully Connected Layer
+            7. Fully Connected Layer
+            8. Fully Connected Layer -> Output [62 Classes]
+            
+    """
     def __init__(self, num_classes):
         super().__init__()
         self.features = torch.nn.Sequential(
@@ -23,7 +35,6 @@ class Net(torch.nn.Module):
             
             torch.nn.Conv2d(256, 256, kernel_size=3, padding=1),
             torch.nn.ReLU(inplace=True),
-            
             torch.nn.MaxPool2d(kernel_size=3, stride=2),
         )
         self.avgpool = torch.nn.AdaptiveAvgPool2d((6, 6))

@@ -36,7 +36,6 @@ def train_model(model, num_epochs, train_iterator, valid_iterator, optimizer, cr
             loss.backward()
             optimizer.step()
             train_loss += loss.item()*data.size(0)
-            train_loss_list.append(train_loss.item())
             
         model.eval()
         for data, target in valid_iterator:
@@ -44,8 +43,8 @@ def train_model(model, num_epochs, train_iterator, valid_iterator, optimizer, cr
             output = model(data)
             loss = criterion(output, target)
             valid_loss += loss.item()*data.size(0)
-            valid_loss_list.append(valid_loss.item())
         
+
         train_loss = train_loss/len(train_iterator.sampler)
         valid_loss = valid_loss/len(valid_iterator.sampler)
         print('Epoch: {} \tTraining Loss: {:.6f} \tValidation Loss: {:.6f}'.format(epoch, train_loss, valid_loss))
@@ -54,5 +53,7 @@ def train_model(model, num_epochs, train_iterator, valid_iterator, optimizer, cr
             print('Validation loss decreased ({:.6f} --> {:.6f}).  Saving model ...'.format( valid_loss_min, valid_loss))
             torch.save(model.state_dict(), 'model.pt')
             valid_loss_min = valid_loss
-
+        
+        valid_loss_list.append(valid_loss/len(valid_iterator))
+        train_loss_list.append(train_loss/len(train_iterator))
     return train_loss_list, valid_loss_list
