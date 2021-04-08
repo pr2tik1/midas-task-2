@@ -3,17 +3,20 @@ import os
 import random
 import numpy as np 
 import pandas as pd
+from PIL import Image
 
 import torch
 from torch.utils.data import Dataset
 
-from PIL import Image
-import matplotlib.pyplot as plt 
-
-
 class dataset(Dataset):
     """
-    Custom Dataset 
+    Custom Dataset Loader class with:
+        - Input : 
+            - csv file of Labels/Targets dataframe(Labels.csv)
+            - Image's folder Path(with all the images inside single folder) 
+            - Transform function values[torchvision.transforms] 
+        - Output : 
+            - Returns Image and corresponding label
     """
     def __init__(self, csv, img_path, transform=None):
         self.labels_df = pd.read_csv(csv)

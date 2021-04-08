@@ -4,13 +4,11 @@ import numpy as np
 import matplotlib.pyplot as plt 
 
 def plot_loss(train_loss_list, valid_loss_list):
-    num_epochs = len(train_loss_list)
-    plt.plot(np.arange(1, num_epochs+1), train_loss_list, label='Training')
-    plt.plot(np.arange(1, num_epochs+1), valid_loss_list, label='Validation')
+    plt.plot(train_loss_list, label='Training loss')
+    plt.plot(valid_loss_list, label='Validation loss')
     plt.xlabel('Epoch')
     plt.ylabel('Loss')
-    plt.legend()
-    plt.tight_layout()
+    plt.legend(frameon=False)
 
 
 def plot_images(images, labels, classes, normalize = False):
