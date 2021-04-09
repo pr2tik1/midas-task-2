@@ -2,30 +2,21 @@ import torch
 import time 
 import numpy as np 
 
-def compute_accuracy(loader, model, device):
-    num_correct = 0
-    num_samples = 0
-    model.eval()
-
-    with torch.no_grad():
-        for x, y in loader:
-            x = x.to(device=device)
-            y = y.to(device=device)
-            scores = model(x)
-            _, predictions = scores.max(1)
-            num_correct += (predictions == y).sum()
-            num_samples += predictions.size(0)
-
-        print(f"Got {num_correct} / {num_samples} with accuracy {float(num_correct)/float(num_samples)*100:.2f}")
-    model.train()
+def compute_accuracy(y_pred, y):
+    top_pred = y_pred.argmax(1, keepdim = True)
+    correct = top_pred.eq(y.view_as(top_pred)).sum()
+    acc = correct.float() / y.shape[0]
+    return acc
 
 def train_model(model, num_epochs, train_iterator, valid_iterator, optimizer, criterion, device):
     train_loss_list, valid_loss_list = [],[]
+    train_acc_list, valid_acc_list = [],[]
+    
     valid_loss_min = np.Inf 
     for epoch in range(1, num_epochs+1):
 
-        train_loss = 0.0
-        valid_loss = 0.0
+        train_loss, valid_loss = 0.0, 0.0
+        train_acc, valid_acc = 0.0 , 0.0
 
         model.train()
         for data, target in train_iterator:
@@ -33,20 +24,34 @@ def train_model(model, num_epochs, train_iterator, valid_iterator, optimizer, cr
             optimizer.zero_grad()
             output = model(data)
             loss = criterion(output, target)
+            acc = compute_accuracy(output, target)
+            
             loss.backward()
             optimizer.step()
-            train_loss += loss.item()*data.size(0)
-            
+            train_loss += loss.item()
+            train_acc += acc.item()
+
         model.eval()
         for data, target in valid_iterator:
             data, target = data.to(device), target.to(device)
             output = model(data)
             loss = criterion(output, target)
-            valid_loss += loss.item()*data.size(0)
+            val_acc = compute_accuracy(output, target)
+            
+            valid_loss += loss.item()
+            valid_acc += val_acc.item()
         
-
         train_loss = train_loss/len(train_iterator.sampler)
         valid_loss = valid_loss/len(valid_iterator.sampler)
+        valid_loss_list.append(valid_loss)
+        train_loss_list.append(train_loss)
+
+
+        train_acc = train_loss/len(train_iterator.sampler)
+        valid_acc = valid_loss/len(valid_iterator.sampler)
+        valid_acc_list.append(valid_acc)
+        train_acc_list.append(train_acc)
+
         print('Epoch: {} \tTraining Loss: {:.6f} \tValidation Loss: {:.6f}'.format(epoch, train_loss, valid_loss))
 
         if valid_loss <= valid_loss_min:
@@ -54,6 +59,4 @@ def train_model(model, num_epochs, train_iterator, valid_iterator, optimizer, cr
             torch.save(model.state_dict(), 'model.pt')
             valid_loss_min = valid_loss
         
-        valid_loss_list.append(valid_loss/len(valid_iterator))
-        train_loss_list.append(train_loss/len(train_iterator))
-    return train_loss_list, valid_loss_list
+    return train_loss_list, valid_loss_list, train_acc_list, valid_acc_list
