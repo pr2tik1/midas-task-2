@@ -3,11 +3,11 @@ import torch
 import numpy as np
 import matplotlib.pyplot as plt 
 
-def plot_loss(train_loss_list, valid_loss_list):
-    plt.plot(train_loss_list, label='Training loss')
-    plt.plot(valid_loss_list, label='Validation loss')
+def plot_loss(train_loss_list, valid_loss_list, title):
+    plt.plot(train_loss_list, label='Training')
+    plt.plot(valid_loss_list, label='Validation')
     plt.xlabel('Epoch')
-    plt.ylabel('Loss')
+    plt.title(title)
     plt.legend(frameon=False)
 
 

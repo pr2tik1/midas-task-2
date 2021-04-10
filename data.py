@@ -27,10 +27,10 @@ class dataset(Dataset):
         return len(self.labels_df)
     
     def __getitem__(self,index):
-        image_path = os.path.join(self.img_path, self.labels_df.iloc[index,1])
+        image_path = os.path.join(self.img_path, self.labels_df.iloc[index,0])
         img = Image.open(image_path)
         
-        y_label = torch.tensor(int(self.labels_df.iloc[index, 3]))
+        y_label = torch.tensor(int(self.labels_df.iloc[index, 2]))
         
         if self.transform:
             img = self.transform(img)
