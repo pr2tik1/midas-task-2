@@ -25,13 +25,10 @@ Activate the environment through:
 source midastaskenv/bin/activate
 ```
 
-The 'nbs' folder contains all of the jupyter notebooks. These jupyter notebooks are my solution to the tasks. They are:
-
-    1. Character Recognition: Part 1
-    2.
-    3.
+The notebook 'character-recognition-using-cnn' contains all solution to the tasks. 
     
-The data for all three tasks are in 'data' folder. The get_labels.py script was used to create a dataframe of images and their respective classes. The script need not be run, because the final csv file is savedas 'Labels.csv' file. Each notebook has its own objective. Necessary explanations are given inside the notebook itself. 
+The data for all three tasks are in 'data' folder. The get_labels.py script was used to create a dataframe of images and their respective classes. The script need not be run, because the final csv file is savedas 'labels.csv' file. The notebook has all the objective listed in it. Necessary explanations are given inside the notebook itself. 
+
 
 ## Author
 
@@ -45,3 +42,4 @@ The data for all three tasks are in 'data' folder. The get_labels.py script was 
 
 - [PyTorch Tutorials](https://pytorch.org/tutorials/) and [Documentation](https://pytorch.org/docs/stable/index.html) 
 - [Udacity Nanodegree Notes](https://github.com/udacity/deep-learning-v2-pytorch)
+- [AlexNet Paper](https://papers.nips.cc/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf) 
