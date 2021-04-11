@@ -2,7 +2,7 @@ import torch
 import torch.nn.functional as F
 import torch.nn as nn
 
-class Net(torch.nn.Module):
+class Net(nn.Module):
     """
     Convolutional Neural Network inspired by AlexNet()
         - CNN's Layers:

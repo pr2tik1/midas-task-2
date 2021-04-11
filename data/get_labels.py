@@ -12,8 +12,11 @@ The steps were:
 
 import os, csv
 
-f=open("test_labels.csv",'r+')
+f=open("mnist.csv",'r+')
 w=csv.writer(f)
-for path, dirs, files in os.walk("data/trainPart1/"):
+
+for path, dirs, files in os.walk("mnist"):
     for filename in files:
         w.writerow([filename])
+        
+
