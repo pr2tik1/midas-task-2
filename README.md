@@ -43,3 +43,5 @@ The data for all three tasks are in 'data' folder. The get_labels.py script was 
 - [PyTorch Tutorials](https://pytorch.org/tutorials/) and [Documentation](https://pytorch.org/docs/stable/index.html) 
 - [Udacity Nanodegree Notes](https://github.com/udacity/deep-learning-v2-pytorch)
 - [AlexNet Paper](https://papers.nips.cc/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf) 
+
+(Please note the notebook files were trained on GPUs provided by Kaggle. Hence the directories of input and model might be different. Please take note while reproducing. Thank you!)
