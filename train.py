@@ -7,8 +7,7 @@ def compute_accuracy(y_pred, y):
     correct = top_pred.eq(y.view_as(top_pred)).sum()
     acc = correct.float() / y.shape[0]
     return acc
-
-def train_model(model, num_epochs, train_iterator, valid_iterator, optimizer, criterion, device, model_name):
+def train_model(model, num_epochs, train_iterator, valid_iterator, optimizer, criterion, device, model_save, model_name):
     train_loss_list, valid_loss_list = [],[]
     train_acc_list, valid_acc_list = [],[]
     
@@ -54,9 +53,11 @@ def train_model(model, num_epochs, train_iterator, valid_iterator, optimizer, cr
 
         print('Epoch: {} \tTraining Loss: {:.6f} \tValidation Loss: {:.6f}'.format(epoch, train_loss, valid_loss))
 
-        if valid_loss <= valid_loss_min:
-            print('Validation loss decreased ({:.6f} --> {:.6f}).  Saving model ...'.format( valid_loss_min, valid_loss))
-            torch.save(model.state_dict(), model_name)
-            valid_loss_min = valid_loss
-        
+        if(model_save == True):
+            if valid_loss <= valid_loss_min:
+                print('Validation loss decreased ({:.6f} --> {:.6f}).  Saving model ...'.format( valid_loss_min, valid_loss))
+                torch.save(model.state_dict(), model_name)
+                valid_loss_min = valid_loss
+
     return train_loss_list, valid_loss_list, train_acc_list, valid_acc_list
+
