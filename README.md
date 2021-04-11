@@ -25,9 +25,16 @@ Activate the environment through:
 source midastaskenv/bin/activate
 ```
 
-The notebook 'character-recognition-using-cnn' contains all solution to the tasks. 
+1. *About Notebooks* : Each part of the second task is solved in each of the following notebooks:
     
-The data for all three tasks are in 'data' folder. The get_labels.py script was used to create a dataframe of images and their respective classes. The script need not be run, because the final csv file is savedas 'labels.csv' file. The notebook has all the objective listed in it. Necessary explanations are given inside the notebook itself. 
+    - Part 1: 
+        - [01character-recognition.ipynb](https://github.com/pr2tik1/midas-task-2/blob/main/01character-recognition.ipynb)
+    - Part 2: 
+        - [02digit-recognition.ipynb](https://github.com/pr2tik1/midas-task-2/blob/main/02digit-recognition.ipynb)
+    - Part 3:
+        - [03new-digits-recognition.ipynb](https://github.com/pr2tik1/midas-task-2/blob/main/03new-digits-recognition.ipynb)
+
+2. *About Data*: Data for all three tasks are in 'data' folder. The get_labels.py script was used to create a dataframe of images and their respective classes. The script need not be run, because the final csv file is savedas 'labels.csv' file. The notebook has all the objective listed in it. Necessary explanations are given inside the notebook itself. 
 
 
 ## Author
@@ -44,4 +51,4 @@ The data for all three tasks are in 'data' folder. The get_labels.py script was 
 - [Udacity Nanodegree Notes](https://github.com/udacity/deep-learning-v2-pytorch)
 - [AlexNet Paper](https://papers.nips.cc/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf) 
 
-(Please note the notebook files were trained on GPUs provided by Kaggle. Hence the directories of input and model might be different. Please take note while reproducing. Thank you!)
+(*Please note the notebook files were trained on GPUs provided by Kaggle. Please take note of directories while reproducing. Thank you!*)
