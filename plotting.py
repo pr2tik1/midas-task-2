@@ -4,6 +4,9 @@ import numpy as np
 import matplotlib.pyplot as plt 
 
 def plot_curve(train_loss_list, valid_loss_list, title):
+    """
+    Plots Accuracy and Loss. 
+    """
     plt.plot(train_loss_list, label='Training')
     plt.plot(valid_loss_list, label='Validation')
     plt.xlabel('Epoch')
@@ -12,6 +15,11 @@ def plot_curve(train_loss_list, valid_loss_list, title):
 
 
 def plot_images(images, labels, classes, normalize = False):
+    """
+    Plots Images with respect to their labels.
+        - Input : Image numpy array, labels, class list
+        - Output: Matploltlib plot  
+    """
     n_images = len(images)
     rows = int(np.sqrt(n_images))
     cols = int(np.sqrt(n_images))

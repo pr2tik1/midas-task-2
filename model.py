@@ -3,19 +3,6 @@ import torch.nn.functional as F
 import torch.nn as nn
 
 class Net(nn.Module):
-    """
-    Convolutional Neural Network inspired by AlexNet()
-        - CNN's Layers:
-            1. Convolution -> ReLU -> Max pooling
-            2. Convolution -> ReLU -> Max pooling
-            3. Convolution -> ReLU 
-            4. Convolution -> ReLU
-            5. Convolution -> ReLU ->Max pooling
-            6. Avg Pooling -> Fully Connected Layer
-            7. Fully Connected Layer
-            8. Fully Connected Layer -> Output [62 Classes]
-            
-    """
     def __init__(self, num_classes):
         super().__init__()
         self.features = nn.Sequential(
