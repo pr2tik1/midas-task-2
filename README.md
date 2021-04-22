@@ -28,7 +28,7 @@ pip3 install -r requirements.txt
     - Part 2: 
         - [digits.ipynb](https://github.com/pr2tik1/midas-task-2/blob/main/digits.ipynb)
     - Part 3:
-        - [new-digits-recognition.ipynb](https://github.com/pr2tik1/midas-task-2/blob/main/digits-recognition.ipynb)
+        - [digits-recognition.ipynb](https://github.com/pr2tik1/midas-task-2/blob/main/digits-recognition.ipynb)
 
 2. *About Data*: Data for all three tasks are in 'data' folder. The get_labels.py script was used to create a dataframe of images and their respective classes. The script need not be run, because the final csv file is savedas 'labels.csv' file. The notebook has all the objective listed in it. Necessary explanations are given inside the notebook itself. 
 
