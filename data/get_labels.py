@@ -12,10 +12,10 @@ The steps were:
 
 import os, csv
 
-f=open("mnist.csv",'r+')
+f=open("test.csv",'r+')
 w=csv.writer(f)
 
-for path, dirs, files in os.walk("mnist"):
+for path, dirs, files in os.walk("testPart1"):
     for filename in files:
         w.writerow([filename])
         
